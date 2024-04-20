@@ -1,5 +1,12 @@
 {
-    "home_page":{
+    "home_page": {
         "dummy": "On y va!"
+    },
+    "footer": {
+        "rights": "Tous droits réservés"
+    },
+    "header": {
+        "page1": "Maison",
+        "page2": "Ajouter un livre"
     }
 }
