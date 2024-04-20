@@ -8,5 +8,13 @@
     "header": {
         "page1": "Maison",
         "page2": "Ajouter un livre"
+    },
+    "books_component": {
+        "title": "Livres disponibles",
+        "book_card": {
+            "title": "Titre",
+            "by": "par",
+            "price": "Prix"
+        }
     }
 }

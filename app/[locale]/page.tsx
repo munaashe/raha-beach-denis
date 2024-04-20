@@ -1,25 +1,15 @@
-'use client'
-
-import { useTranslations } from "next-intl";
-import { Book } from "@/utils/Types";
+import BooksComponent from "@/components/BooksComponent";
 
 
 export default async function Home() {
-  const t = useTranslations('home_page');
-  //const [books, setBooks] = useState<Book | null>(null);
-
-  /*useEffect(() => {
-    fetch('/api/books')
-      .then((response) => response.json())
-      .then((data) => setBooks(data.books))
-      .catch((error) => console.error('Error fetching books:', error));
-  }, []);
-
-  console.log(books)*/
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
+    cache: 'no-store'
+  })
+  const books = await res.json()
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {t("dummy")}
+    <main className="min-h-[70vh]">
+      <BooksComponent books={books} />
     </main>
   );
 }

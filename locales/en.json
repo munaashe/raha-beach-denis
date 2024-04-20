@@ -8,5 +8,13 @@
     "header": {
         "page1": "Home",
         "page2": "Add Book"
+    },
+    "books_component": {
+        "title": "Books Available",
+        "book_card": {
+            "title": "Title",
+            "by": "by",
+            "price": "Price"
+        }
     }
 }
