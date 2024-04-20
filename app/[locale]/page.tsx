@@ -1,10 +1,25 @@
-import { getTranslations } from "next-intl/server";
+'use client'
 
-export default async function Home(props: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: props.params.locale });
+import { useTranslations } from "next-intl";
+import { Book } from "@/utils/Types";
+
+
+export default async function Home() {
+  const t = useTranslations('home_page');
+  //const [books, setBooks] = useState<Book | null>(null);
+
+  /*useEffect(() => {
+    fetch('/api/books')
+      .then((response) => response.json())
+      .then((data) => setBooks(data.books))
+      .catch((error) => console.error('Error fetching books:', error));
+  }, []);
+
+  console.log(books)*/
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {t("home_page.dummy")}
+      {t("dummy")}
     </main>
   );
 }
