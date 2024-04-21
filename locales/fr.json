@@ -18,6 +18,12 @@
         }
     },
     "add_book": {
-        "title": "Ajouter un nouveau livre"
+        "title": "Ajouter un nouveau livre",
+        "form": {
+            "title": "Titre",
+            "author": "Auteur",
+            "price": "Prix",
+            "submit": "Soumettre"
+        }
     }
 }

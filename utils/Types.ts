@@ -4,3 +4,5 @@ export interface Book {
     author: string;
     price: number;
 }
+
+export type Locale = "en" | "fr";

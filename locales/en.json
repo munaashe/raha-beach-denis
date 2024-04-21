@@ -17,7 +17,13 @@
             "price": "Price"
         }
     },
-    "add_book":{
-        "title": "Add New Book"
+    "add_book": {
+        "title": "Add New Book",
+        "form": {
+            "title": "Title",
+            "author": "Author",
+            "price": "Price",
+            "submit":"Submit"
+        }
     }
 }

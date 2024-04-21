@@ -3,6 +3,7 @@ import { Book } from '@/utils/Types'
 import React, { useState } from 'react'
 import InputField from './Inputfield'
 import { fetchAddNewBook } from '@/utils/Books'
+import { useTranslations } from 'next-intl'
 
 const initialState: Book = {
     id: 0,
@@ -13,6 +14,7 @@ const initialState: Book = {
 const AddBookComponent = () => {
     const [data, setData] = useState<Book>(initialState)
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const t = useTranslations('add_book.form')
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         setIsLoading(true);
@@ -48,14 +50,14 @@ const AddBookComponent = () => {
         <div className='flex flex-col items-center justify-center'>
             <form onSubmit={handleSubmit} className='flex flex-col items-center gap-2 pt-4 w-1/3'>
                 <InputField
-                    label='Title'
+                    label={t('title')}
                     id='title'
                     name='title'
                     value={data.title}
                     onChange={handleChange}
                 />
                 <InputField
-                    label='Author'
+                    label={t('author')}
                     id='author'
                     name='author'
                     value={data.author}
@@ -63,7 +65,7 @@ const AddBookComponent = () => {
                 />
                 <InputField
                     type='number'
-                    label='Price'
+                    label={t('price')}
                     id='price'
                     name='price'
                     value={data.price}
@@ -92,7 +94,7 @@ const AddBookComponent = () => {
                         </div>
                     ) : (
                         <button type="submit" className='py-1 px-4 bg-gray-800 hover:bg-gray-600 rounded-md text-white'>
-                            Submit
+                            {t('submit')}
                         </button>
                     )}
                 </div>
