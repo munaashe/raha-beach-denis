@@ -1,4 +1,5 @@
 import { Book } from '@/utils/Types'
+import { formatCurrency } from '@/utils/formatCurrency';
 import { useTranslations } from 'next-intl';
 import React from 'react'
 
@@ -22,7 +23,7 @@ const BookCard: React.FC<BookCardProps> = ({ book }) => {
                 {t('by')}  {author}
             </div>
             <div className='text-[#097969] pt-4 font-bold font-[24px]'>
-                <span className='text-black font-normal text-[14px]'>{t('price')}:</span> ${price}
+                <span className='text-black font-normal text-[14px]'>{t('price')}:</span> ${formatCurrency(price)}
             </div>
         </div>
     )
