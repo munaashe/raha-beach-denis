@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import LocalSwitcher from './LocaleSwitcher';
+import { LocaleSwitcher } from './LocaleSwitcher';
 
 const Header: React.FC = () => {
     const t = useTranslations('header');
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
                             </Link>
                         </li>
                     </ul>
-                    <LocalSwitcher />
+                    <LocaleSwitcher />
                 </nav>
                 <div className="md:hidden">
                     <button className="text-white focus:outline-none" onClick={toggleMenu}>

@@ -1,51 +1,61 @@
 'use client'
-import { useState } from "react";
+
+import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
-type LanguageItem = {
-  label: string;
-  key: string;
-};
+const locales = ["en", "fr"];
+type Locale = (typeof locales)[number];
 
-const LocalSwitcher: React.FC = () => {
-  const items: LanguageItem[] = [
-    {
-      label: "🇺k English",
-      key: "en",
-    },
-    {
-      label: "🇫🇷 French",
-      key: "fr",
-    },
-  ];
-
+export const LocaleSwitcher: React.FC = () => {
+  const locale = useLocale() as Locale;
   const router = useRouter();
-  const [isPending, setIsPending] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const onChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
-    event.preventDefault();
-    const nextLocale = event.target.value;
+  function handleLocaleChange(newLocale: Locale): void {
+    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+    router.refresh();
+    setIsDropdownOpen(false)
+    console.log(newLocale)
+  }
 
-    setIsPending(true);
-    try {
-      await router.replace(`/${nextLocale}`);
-    } finally {
-      setIsPending(false);
-    }
-  };
+  function toggleDropdown(): void {
+    setIsDropdownOpen((prevState) => !prevState);
+  }
 
   return (
     <div className="relative">
-      <select className="globe-icon bg-gray-800" onChange={onChange}>
-        {items.map((item) => (
-          <option key={item.key} value={item.key}>
-            {item.label}
-          </option>
-        ))}
-      </select>
-      {isPending && <div>Loading...</div>}
+      <button
+        type="button"
+        className="p-2 rounded-full hover:bg-gray-200 focus:outline-none"
+        onClick={toggleDropdown}
+      >
+        Language
+      </button>
+
+      {isDropdownOpen && (
+        <div className="absolute right-0 mt-2 bg-white rounded shadow-lg">
+          <div className="px-4 py-2">
+            <p className="text-sm font-medium">Language</p>
+          </div>
+          <div className="border-t border-gray-200">
+            <button
+              className={`${locale === "en" ? "font-medium" : ""
+                } block w-full px-4 py-2 text-sm text-left text-gray-900`}
+              onClick={() => handleLocaleChange("en")}
+            >
+              English
+            </button>
+            <button
+              className={`${locale === "es" ? "font-medium" : ""
+                } block w-full px-4 py-2 text-sm text-left text-gray-900`}
+              onClick={() => handleLocaleChange("fr")}
+            >
+              French
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-
-export default LocalSwitcher;
