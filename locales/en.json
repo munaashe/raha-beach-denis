@@ -16,5 +16,8 @@
             "by": "by",
             "price": "Price"
         }
+    },
+    "add_book":{
+        "title": "Add New Book"
     }
 }

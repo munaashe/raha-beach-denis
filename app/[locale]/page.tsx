@@ -1,11 +1,10 @@
 import BooksComponent from "@/components/BooksComponent";
+import { fetchGetAllBooks } from "@/utils/Books";
 
 
 export default async function Home() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
-    cache: 'no-store'
-  })
-  const books = await res.json()
+
+  const books = await fetchGetAllBooks()
 
   return (
     <main className="min-h-[70vh]">

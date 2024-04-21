@@ -16,5 +16,8 @@
             "by": "par",
             "price": "Prix"
         }
+    },
+    "add_book": {
+        "title": "Ajouter un nouveau livre"
     }
 }
