@@ -1,7 +1,7 @@
 'use client'
 import { Book } from '@/utils/Types'
 import React, { useState } from 'react'
-import InputField from './Inputfield'
+import InputField from './InputField'
 import { fetchAddNewBook } from '@/utils/Books'
 import { useTranslations } from 'next-intl'
 
