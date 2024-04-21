@@ -54,6 +54,8 @@ yarn dev
 
 The live environment of this project can be accessed at [https://raha-denis.vercel.app](https://raha-denis.vercel.app).
 
+The live JSON server is running at [https://json-books-server.vercel.app/](https://json-books-server.vercel.app/).
+
 ## Justifications
 
 ### Next.js
@@ -103,4 +105,14 @@ Next-Intl is a localization library for Next.js applications that provides a sea
 
 - **Flexible and Scalable**: Next-Intl provides a flexible architecture that allows for easy integration with other localization tools and libraries. It can be extended and customized to meet the specific requirements of the project, making it suitable for both small and large-scale applications.
 
-By using Next-Intl, this project achieves a seamless and user-friendly language switching experience, ensuring that the application can cater to a global audience with different language preferences while maintaining a consistent and localized user interface.
+### Using React Query
+
+1. **Simplified Data Fetching:** React Query simplifies data fetching from APIs by abstracting away complexities such as loading states, caching, and error handling. Its intuitive hooks like `useQuery` and `useMutation` streamline data fetching and updating with minimal boilerplate code.
+
+2. **Automatic Cache Management:** React Query automatically manages data caching and invalidation. It intelligently updates the cache when data changes or expires, reducing unnecessary network requests and improving application performance.
+
+3. **Real-time and Optimistic Updates:** React Query supports real-time updates with optimistic updates. It allows immediate local cache updates with new data, followed by background fetches to synchronize with the server. This ensures a smooth user experience and reduces perceived latency.
+
+4. **Integrated Pagination and Infinite Scrolling:** React Query provides built-in support for pagination and infinite scrolling. Hooks like `useInfiniteQuery` and `usePaginatedQuery` simplify the implementation of paginated data fetching, loading additional pages as the user scrolls.
+
+These justifications highlight the benefits of using React Query for data management in React applications. Its streamlined data fetching, automatic cache management, real-time updates, and built-in pagination support make it a powerful tool for efficient and responsive applications.
