@@ -16,21 +16,18 @@ const fetchGetAllBooks = async (): Promise<Book[]> => {
 };
 
 const fetchAddNewBook = async (data: Partial<Book>): Promise<void> => {
-    try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ ...data, id: Math.floor(Math.random() * 1000) }),
-        });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/books`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...data, id: Math.floor(Math.random() * 1000) }),
+    });
 
-        if (!response.ok) {
-            throw new Error('Failed to add new book');
-        }
-    } catch (error: any) {
-        throw new Error(error.message);
+    if (!response.ok) {
+        throw new Error('Failed to add a new book');
     }
 };
 
 export { fetchGetAllBooks, fetchAddNewBook }
+

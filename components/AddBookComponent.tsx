@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import InputField from './InputField'
 import { fetchAddNewBook } from '@/utils/Books'
 import { useTranslations } from 'next-intl'
+import { useMutation, useQueryClient } from 'react-query'
 
 const initialState: Book = {
     id: 0,
@@ -15,6 +16,19 @@ const AddBookComponent = () => {
     const [data, setData] = useState<Book>(initialState)
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const t = useTranslations('add_book.form')
+
+    const queryClient = useQueryClient();
+
+    const addNewBookMutation = useMutation(fetchAddNewBook, {
+        onSuccess: () => {
+            // After adding the book, invalidate the book list query
+            queryClient.invalidateQueries('books');
+            alert('Book added successfully!');
+        },
+        onError: (error: any) => {
+            alert(error.message);
+        },
+    });
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         setIsLoading(true);
@@ -28,9 +42,8 @@ const AddBookComponent = () => {
         }
 
         try {
-            // Call the fetchAddNewBook function only when the fields are valid
-            await fetchAddNewBook(data);
-            alert('Book added successfully!');
+            // Call the addNewBookMutation function only when the fields are valid
+            await addNewBookMutation.mutateAsync(data);
         } catch (error: any) {
             alert(error.message);
         } finally {
@@ -104,4 +117,3 @@ const AddBookComponent = () => {
 }
 
 export default AddBookComponent
-

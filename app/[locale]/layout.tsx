@@ -7,6 +7,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { NextIntlClientProvider, useMessages } from 'next-intl';
+import ProviderClientComponent from "@/components/ProviderClientComponent";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -86,9 +87,11 @@ export default function RootLayout(props: Props) {
     <html lang={params.locale || defaultLocale}>
       <body className={inter.className}>
         <NextIntlClientProvider locale={params.locale} messages={messages}>
-          <Header />
-          {children}
-          <Footer />
+          <ProviderClientComponent>
+            <Header />
+            {children}
+            <Footer />
+          </ProviderClientComponent>
         </NextIntlClientProvider>
       </body>
     </html>
